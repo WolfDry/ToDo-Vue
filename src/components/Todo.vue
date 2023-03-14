@@ -9,6 +9,8 @@ export default {
   methods: {
     addTodo: function (form) {
       form.preventDefault()
+      if (this.newTodo.title === ' ' || this.newTodo.title === '' || this.newTodo.title === undefined)
+        return
       let date = new Date()
       date = date.toLocaleString('fr-FR')
       this.newTodo = {
@@ -26,6 +28,13 @@ export default {
     },
     deleteTodo: function (todo) {
       const listTodos = this.todos.filter(element => element != todo)
+      this.todos = listTodos
+    },
+    deleteAll: function () {
+      this.todos = []
+    },
+    deleteDone: function () {
+      const listTodos = this.todos.filter(element => element.done === false)
       this.todos = listTodos
     }
   }
@@ -45,6 +54,7 @@ export default {
         <button @click="deleteTodo(todo)">Delete</button>
       </div>
     </div>
-
+    <button @click="deleteAll">Delete all tasks</button>
+    <button @click="deleteDone">Delete all tasks done</button>
   </div>
 </template>
