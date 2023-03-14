@@ -23,7 +23,10 @@ export default {
       if (todo.done)
         todo.done = false
       else todo.done = true
-
+    },
+    deleteTodo: function (todo) {
+      const listTodos = this.todos.filter(element => element != todo)
+      this.todos = listTodos
     }
   }
 }
@@ -39,6 +42,7 @@ export default {
       <div class="todo" v-for="todo in todos">
         <p :class="{ done: todo.done }">{{ todo.title }}</p>
         <button @click="changeTodo(todo)">Done</button>
+        <button @click="deleteTodo(todo)">Delete</button>
       </div>
     </div>
 
