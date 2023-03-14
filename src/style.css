@@ -3,7 +3,9 @@
   justify-content: space-around;
 }
 
-
+.done {
+  text-decoration: line-through;
+}
 
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;

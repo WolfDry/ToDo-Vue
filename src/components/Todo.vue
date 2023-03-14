@@ -18,6 +18,12 @@ export default {
       }
       this.todos.push(this.newTodo)
       this.newTodo = {}
+    },
+    changeTodo: function (todo) {
+      if (todo.done)
+        todo.done = false
+      else todo.done = true
+
     }
   }
 }
@@ -30,13 +36,10 @@ export default {
       <button type="submit">Add</button>
     </form>
     <div class="list">
-      <div class="todo" v-for="(todo, index) in todos">
-        <p>{{ todo.title }}</p>
-        <button>Done</button>
+      <div class="todo" v-for="todo in todos">
+        <p :class="{ done: todo.done }">{{ todo.title }}</p>
+        <button @click="changeTodo(todo)">Done</button>
       </div>
-    </div>
-    <div class="complete">
-
     </div>
 
   </div>
